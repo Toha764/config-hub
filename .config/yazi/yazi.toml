@@ -1,0 +1,22 @@
+[manager]
+
+# Path
+cwd = { fg = "#d79921", bold = true }
+
+# Regular files
+file = { fg = "#ebdbb2" }
+
+# Directories (warm brown)
+dir = { fg = "#b57614", bold = true }
+
+# Executables
+exec = { fg = "#d65d0e", bold = true }
+
+# Selected item (soft brown highlight)
+hovered = { fg = "#1d2021", bg = "#b57614" }
+
+# Preview
+preview = { fg = "#ebdbb2" }
+
+# Status line
+status = { fg = "#ebdbb2", bg = "#282828" }

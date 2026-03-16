@@ -1,0 +1,18 @@
+# Apps to Have
+
+
+1. Quicklook: light previewer
+2. Translucent TB: cool taskbar
+3. Power Toys - Fancy Zone, Text Extractor
+4. Revo Uninstaller: clean uninstaller
+5. Screen Marker: draws on the screen
+6. Recuva: recovers deleted file
+7. Notepads: better notepad
+8. Ambie: Pomodoro + ambient sound
+9. Fluent Weather, Fluent Search
+10. Onlyoffice: ms word alternative
+11. UniGetUi: package manager
+12. MS Pc Manager
+13. Typora: .md preview
+14. cmdTab: better alt + tab
+

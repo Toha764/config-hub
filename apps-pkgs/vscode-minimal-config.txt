@@ -1,0 +1,27 @@
+# VS-code Settings: 
+
+{
+"files.exclude": {
+"**/*exe": true
+},
+"files.autoSave": "afterDelay",
+"window.title": " ",
+"window.commandCenter": false,
+"window.menuBarVisibility": "compact",
+"breadcrumbs.enabled": false,
+"explorer.compactFolders": false,
+"workbench.activityBar.location": "bottom",
+"workbench.statusBar.visible": false,
+"workbench.layoutControl.enabled": false,
+"workbench.navigationControl.enabled": false,
+"editor.wordWrap": "on",
+"editor.hideCursorInOverviewRuler": true,
+"editor.minimap.enabled": false,
+"editor.bracketPairColorization.enabled": false,
+"editor.scrollbar.vertical": "hidden",
+"editor.occurrencesHighlight": "off",
+"vscode_custom_css.imports": [
+"file:/// {FILE PATH}"
+],
+}
+
