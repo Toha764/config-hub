@@ -66,6 +66,9 @@ return {
 						"build",
 					},
 				},
+				colorscheme = {
+					enable_preview = true,
+				},
 			},
 
 			extensions = {

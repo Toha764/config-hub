@@ -16,6 +16,11 @@ vim.opt.winblend = 0
 vim.opt.synmaxcol = 300
 vim.opt.fillchars = { eob = " " }
 
+-- Status Line
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 0
+vim.opt.showmode = false
+
 -- Line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -23,7 +28,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 
 -- Visuals
-vim.opt.termguicolors = true
 vim.opt.winborder = "rounded"
 
 -- Indentation

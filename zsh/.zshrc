@@ -1,64 +1,52 @@
 ### Oh My Zsh & Plugins 
+
 ZSH_THEME="robbyrussell"
-plugins=(git)
+
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
+
 eval "$(zoxide init zsh)"
-eval $(thefuck --alias fuck)
 
-### Paths ###
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+# vim-mode & editor settings
+set -o vi
+bindkey -M viins '^P' up-line-or-beginning-search
+bindkey -M viins '^N' down-line-or-beginning-search
+export EDITOR="nvim"
+export VISUAL="nvim"
 
-# ~Nyaan
+# ~Nyaan 
 echo -e "\e[35m
                     /\_/\  
                    ( o.o ) 
                     > ^ <  
 \e[0m"
+### Aliases ###
 
-### Default editor ###
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-### General ###
-alias ip='curl -s ipinfo.io'
 alias src='source ~/.zshrc'
 alias rc='nvim $HOME/.zshrc'
-alias gc='cd ~/.config/ && yazi' #dotfiles 
-alias gn='cd ~/300\ Resources/00\ Books/000\ Markdown_Notes && yazi'
+alias gc='cd ~/.config/ && yazi'
 
-### Aliases ###
+# quality of life
+alias ip='curl -s ipinfo.io'
 alias cat="bat"
 alias nv="nvim"
 alias yz="yazi"
+alias c="clear"
+alias attach="tmux attach 2>/dev/null || tmux new-session -s main"
+alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 
-# Envman
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-export GEMINI_API_KEY="$(cat ~/.secrets/gemini_key)"
+# fuzzy-spam
+alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'
+alias lo='source ~/scripts/fzf-oldfiles.sh'
 
-# Nyan CLI
-NYAN_HOME="$HOME/100 Projects/Py Projects/Nyan Bot"
-nyan() {
-  "$NYAN_HOME/venv/bin/python" "$NYAN_HOME/cli.py" "$@"
-}
-
-### notesgrep
-notes() {
-  local dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Notes & Books/00 Books/000 Markdown_Notes"
-
-  ll result
-  result=$(rg --line-number --no-heading --color=always --follow "" "$dir" -g "*.md" \
-    | fzf --ansi \
-          --delimiter ':' \
-          --preview 'bat --style=numbers --color=always {1} --highlight-line {2}' \
-          --preview-window=right:60%)
-
-  [ -z "$result" ] && return
-
-  local file line
-  file=$(echo "$result" | cut -d: -f1)
-  line=$(echo "$result" | cut -d: -f2)
-
-  nvim +"$line" "$file"
-}
+# git 
+alias gadd="git add ."
+alias gstatus="git status -s"
+alias gcommit='git commit -m'
+alias glog='git log --oneline --graph --all'
+alias gcreate='gh repo create --private --source=. --remote=origin'

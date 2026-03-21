@@ -1,0 +1,8 @@
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+
+[[session]]
+name = "notes"
+path = "~/300 Resources/Markdown_Notes"
+
