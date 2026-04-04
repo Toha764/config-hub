@@ -175,6 +175,8 @@ Feel free to contribute here. Main goal:
 
 ### Other Stuff
 
+- [How Does CPU Work?](https://cpu.land/)
+  Learn how multiprocessing works, what system calls really are, how computers manage memory 
 - [NAND2Tetris Web IDE](https://nand2tetris.github.io/web-ide/chip/)
   Has Assembler, Verilog Like IDE on the WEB.
 - [Devpost Hackathons](https://devpost.com/hackathons?page=2)
