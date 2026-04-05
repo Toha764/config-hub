@@ -16,8 +16,8 @@ export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --borde
 set -o vi
 bindkey -M viins '^P' up-line-or-beginning-search
 bindkey -M viins '^N' down-line-or-beginning-search
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="/usr/local/bin/nvim"
+export VISUAL="/usr/local/bin/nvim"
 
 # ~Nyaan 
 echo -e "\e[35m
@@ -34,7 +34,7 @@ alias rc='nvim $HOME/.zshrc'
 alias ip='curl -s ipinfo.io'
 
 # quality of life
-alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
+# alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 alias c="clear"
 alias cat="bat"
 alias nv="nvim"
