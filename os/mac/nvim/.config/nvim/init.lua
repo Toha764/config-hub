@@ -1,21 +1,20 @@
---------------------------------------------------
--- Main Init File
--- Modularized NeoVim Configuration
---------------------------------------------------
-vim.opt.termguicolors = true
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+require("config.theme")      -- colorscheme + transparency
+require("config.options")    -- vim.opt settings
+require("config.keymaps")    -- keybindings
+require("config.statusline") -- custom statusline
+require("config.autocmds")   -- autocommands
+require("config.plugins")    -- vim.pack.add + packadd
+require("config.alpha")
+require("config.leet")
+-- require("config.colorizer")
 
--- Transparent bg before any plugin loads
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+-- treesitter must come before lsp
+require("config.treesitter")
 
--- Core
-require("core.keymaps")
-require("core.lazy")
-require("core.options")
-
--- UI modules
-require("ui.tabline").setup()
-require("ui.terminal").setup()
+require("config.nvimtree")
+require("config.fzf")
+require("config.gitsigns")
+require("config.lsp")        -- LSP + blink.cmp + efm
+require("config.terminal")   -- floating terminal
+require("config.mini")
+require("config.markdown")

@@ -1,4 +1,4 @@
-### Oh My Zsh & Plugins 
+### Oh My Zsh ###
 ZSH_THEME="robbyrussell"
 
 plugins=(
@@ -8,53 +8,94 @@ plugins=(
 )
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
-source <(fzf --zsh)
-eval "$(zoxide init zsh)"
-export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
-# vim-mode & editor settings
-set -o vi
-bindkey -M viins '^P' up-line-or-beginning-search
-bindkey -M viins '^N' down-line-or-beginning-search
-export EDITOR="/usr/local/bin/nvim"
-export VISUAL="/usr/local/bin/nvim"
-
-# ~Nyaan 
+# ~Nyaan (IMPORTANT! shell session won't open without it!, obviously :3 )
 echo -e "\e[35m
                     /\_/\  
                    ( o.o ) 
                     > ^ <  
 \e[0m"
 
+### Some vanilla zsh-config stolen from Kali Linux ###
+# --- Navigation ---
+setopt autocd              # cd into a directory just by typing its name
+WORDCHARS='_- '           # treat _ and - as word separators (better movement/editing)
 
-### Aliases ###
+# --- Auto Completion ---
+autoload -Uz compinit
+compinit -d ~/.cache/zcompdump
 
-alias src='source ~/.zshrc'
-alias rc='nvim $HOME/.zshrc'
-alias ip='curl -s ipinfo.io'
+zstyle ':completion:*' menu select                          # interactive menu on TAB
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case-insensitive matching
+zstyle ':completion:*' auto-description 'specify: %d'       # better descriptions
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more%s
 
-# quality of life
-# alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
-alias c="clear"
+# --- History Improvements ---
+setopt HIST_IGNORE_ALL_DUPS      # remove older duplicates
+setopt SHARE_HISTORY            # share history across sessions
+setopt hist_ignore_space        # don't save commands starting with space
+setopt hist_verify              # show expanded history before executing
+setopt hist_expire_dups_first   # clean duplicates first when trimming
+
+setopt CORRECT                  # auto-correct minor typos
+setopt COMPLETE_IN_WORD         # allow completion inside words
+setopt magicequalsubst          # expand paths in assignments (VAR=~/file)
+setopt nonomatch                # don't error if glob doesn't match
+
+# --- Keybindings (works w/ vi + emacs) ---
+bindkey '^[[1;5C' forward-word   # Ctrl + →
+bindkey '^[[1;5D' backward-word  # Ctrl + ←
+bindkey '^U' backward-kill-line  # Ctrl + U delete line
+
+NEWLINE_BEFORE_PROMPT=yes        # add spacing before each prompt
+
+# --- Better man/help page colors ---
+export LESS_TERMCAP_md=$'\E[1;36m'  # bold text
+export LESS_TERMCAP_us=$'\E[1;32m'  # underline text
+
+# ====================================================================
+# From this point on, highly customized and requires dependencies
+# git cli, fzf, zoxide, tmux, eza, bat, neovim
+# ====================================================================
+
+### FZF & Navigation Tools ###
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
+
+### Editor & Mode ###
+set -o vi
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+### Smart Aliases ###
+alias src='source ~/.zshrc'      # reload config
+alias rc='nvim $HOME/.zshrc'    # edit config
+alias ip='curl -s ipinfo.io'    # quick public IP info
+
+alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 alias cat="bat"
+
+# --- quick commands ---
+alias c="clear"
 alias nv="nvim"
 alias yz="yazi"
+alias tk="task"
+# --- tmux auto attach ---
 alias tx="tmux attach 2>/dev/null || tmux new-session -s main"
 
-# fuzzy-everything
-alias lo='source ~/.scripts/fzf-oldfiles.sh'                                    # fuzzy last opened
-alias fv="nvim \$(fzf --preview 'bat --color=always {}')"                      # fuzzy nvim
-alias fcd="cd \$(fd --type d | fzf --preview 'eza --tree --color=always {}')"  # fuzzy change dir
+### Fuzzy Obessesion ###
+alias lo='source ~/.scripts/fzf-oldfiles.sh'                  # fuzzy recent files (script based)
+alias fv="nvim \$(fzf --preview 'bat --color=always {}')"                      # fuzzy open file
+alias fcd="cd \$(fd --type d | fzf --preview 'eza --tree --color=always {}')"  # fuzzy cd
 alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill"                    # fuzzy kill process
-alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man
+alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man search
 
-# git 
+### Git Shortcuts ###
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
 alias gp='git push origin main'
 alias glog='git log --oneline --graph --all'
 alias gcreate='gh repo create --private --source=. --remote=origin'
-
-
 

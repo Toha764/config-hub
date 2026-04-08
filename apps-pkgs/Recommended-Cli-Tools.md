@@ -1,63 +1,87 @@
-# Linux CLI Tools
+---
+title: CLI Tools
+tags: [linux, cli, tools, reference]
+---
 
-_A curated set of modern terminal utilities that improve the shell experience._
+# CLI Tools
+
+> Favorites: bat, fzf, zoxide, tldr, yazi
+
+## Core Replacements
+
+| Tool      | Replaces | What it does                                 |
+| --------- | -------- | -------------------------------------------- |
+| `eza`     | `ls`     | Directory listing with icons, git, tree view |
+| `bat`     | `cat`    | File viewer with syntax highlighting         |
+| `ripgrep` | `grep`   | Extremely fast recursive search              |
+| `fd`      | `find`   | Simple, fast file finder                     |
+| `dust`    | `du`     | Intuitive disk usage visualizer              |
+| `procs`   | `ps`     | Modern process viewer                        |
+| `btop`    | `top`    | Rich system and process monitor              |
 
 ---
 
-# Modern CLI Tools (Recommended)
+## Shell & Navigation
 
-## Core Command Replacements
-
-| Tool        | Replaces | Description                                                      | Usage                           |
-| ----------- | -------- | ---------------------------------------------------------------- | ------------------------------- |
-| **eza**     | `ls`     | Modern directory listing with icons, git integration, tree view. | `ls`, `l`, `la`, `ll` (aliases) |
-| **ripgrep** | `grep`   | Extremely fast recursive search tool.                            | `rg <pattern>`                  |
-| **fd**      | `find`   | Simple, fast file search with intuitive syntax.                  | `fd <pattern>`                  |
-| **bat**     | `cat`    | File viewer with syntax highlighting and git integration.        | `cat file`                      |
-| **dust**    | `du`     | Intuitive disk usage viewer with better visualization.           | `du`                            |
-| **procs**   | `ps`     | Modern process viewer with better formatting.                    | `ps`                            |
+| Tool      | What it does                                        |
+| --------- | --------------------------------------------------- |
+| `fzf`     | General-purpose fuzzy finder — ctrl+r, ctrl+t       |
+| `zoxide`  | Smarter cd that learns your directories (`z <dir>`) |
+| `yazi`    | Terminal file manager with fzf + zoxide integration |
+| `tldr`    | Simplified, community-driven man pages              |
+| `thefuck` | Suggests the correct command after a mistake        |
 
 ---
 
-## Shell Navigation & Productivity
+## Development
 
-| Tool       | Description                                               | Usage              |
-| ---------- | --------------------------------------------------------- | ------------------ |
-| **fzf**    | General-purpose fuzzy finder used across shell workflows. | `Ctrl+R`, `Ctrl+T` |
-| **zoxide** | Smarter `cd` that learns frequently used directories.     | `z <dir>`          |
-| **tldr**   | Simplified community-driven man pages.                    | `tldr <command>`   |
-
----
-
-## Nix Ecosystem Tools
-
-| Tool          | Description                                                | Usage                                 |
-| ------------- | ---------------------------------------------------------- | ------------------------------------- |
-| **comma**     | Run software without installing it permanently.            | `, <command>`                         |
-| **nix-tree**  | Browse dependency graphs of Nix derivations interactively. | `nix-tree`                            |
-| **nix-index** | Database of files in nixpkgs; powers `command-not-found`.  | `nix-locate <file>`                   |
-| **nvd**       | Compare package versions between Nix generations.          | `nvd diff /run/current-system result` |
+| Tool         | What it does                                      |
+| ------------ | ------------------------------------------------- |
+| `nvim`       | Extensible modal text editor                      |
+| `lazygit`    | Terminal UI for git operations                    |
+| `lazydocker` | Terminal UI for docker containers and images      |
+| `direnv`     | Auto-loads env variables per directory (`.envrc`) |
+| `stow`       | Manage dotfiles with symlinks                     |
+| `asciinema`  | Record and share terminal sessions                |
+| `fabric`     | AI-powered CLI for common LLM workflows           |
 
 ---
 
-## Development & Workflow
+## File & Data
 
-| Tool              | Description                                              | Usage                 |
-| ----------------- | -------------------------------------------------------- | --------------------- |
-| **neovim (nvim)** | Highly extensible modal text editor.                     | `nvim`                |
-| **lazygit**       | Terminal UI for Git operations.                          | `lazygit`             |
-| **direnv**        | Automatically loads environment variables per directory. | `.envrc`              |
-| **nix-direnv**    | Faster Nix environment loading for direnv.               | `use nix` in `.envrc` |
-| **stow**          | Manage dotfiles using symlinks.                          | `stow <package>`      |
+| Tool       | What it does                                |
+| ---------- | ------------------------------------------- |
+| `jq`       | JSON processor (`jq '.field'`)              |
+| `unp`      | Universal archive extractor                 |
+| `shred`    | Securely delete files (overwrite before rm) |
+| `rsync`    | Fast, incremental file sync and backup      |
+| `wormhole` | Send files securely between machines        |
+| `column`   | Format text into aligned columns            |
 
 ---
 
-## Utilities
+## Network & Security
 
-| Tool        | Description                                               | Usage         |
-| ----------- | --------------------------------------------------------- | ------------- |
-| **jq**      | Command-line JSON processor.                              | `jq '.field'` |
-| **btop**    | Modern system/process monitor with rich UI.               | `btop`        |
-| **yazi**    | Fast terminal file manager with zoxide & fzf integration. | `yazi`        |
-| **thefuck** | Suggests the correct command after a mistake.             | `fuck`        |
+| Tool        | What it does                                    |
+| ----------- | ----------------------------------------------- |
+| `termshark` | Terminal UI for Wireshark/tshark packet capture |
 
+---
+
+## Nix Ecosystem
+
+| Tool         | What it does                                  |
+| ------------ | --------------------------------------------- |
+| `comma`      | Run software without installing (`, <cmd>`)   |
+| `nix-tree`   | Browse Nix derivation dependency graphs       |
+| `nix-index`  | Find which package owns a file (`nix-locate`) |
+| `nvd`        | Diff package versions between Nix generations |
+| `nix-direnv` | Faster Nix environment loading for direnv     |
+
+---
+
+## Productivity
+
+| Tool          | What it does                                                   |
+| ------------- | -------------------------------------------------------------- |
+| `taskwarrior` | Powerful CLI task manager (todo list) with filters and reports |
