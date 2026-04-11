@@ -84,7 +84,7 @@ alias cat="bat"
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 alias tk="taskwarrior-tui"
 alias tx="tmux attach 2>/dev/null || tmux new-session -s main"
-alias ask="~/.scripts/llm-agent-mac.sh"
+alias nlsh="~/.scripts/nlsh-mac.sh"
 
 ### Fuzzy Obessesion ###
 alias lo='source ~/.scripts/fzf-oldfiles.sh'                  # fuzzy recent files (script based)
@@ -92,6 +92,7 @@ alias fv="nvim \$(fzf --preview 'bat --color=always {}')"                      #
 alias fcd="cd \$(fd --type d | fzf --preview 'eza --tree --color=always {}')"  # fuzzy cd
 alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill"                    # fuzzy kill process
 alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man search
+alias fsh='source ~/.scripts/fzf-nlsh.sh'                                      # fuzzy ask search
 
 ### Git Shortcuts ###
 alias ga="git add ."
