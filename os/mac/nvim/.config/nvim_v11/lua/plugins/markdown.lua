@@ -1,5 +1,5 @@
 --------------------------------------------------
--- Markdown Rendering Configuration *
+-- Markdown Rendering Configuration
 --------------------------------------------------
 
 return {

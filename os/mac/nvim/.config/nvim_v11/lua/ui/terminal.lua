@@ -64,7 +64,8 @@ function M.toggle()
 
 	-- Start shell only on first open
 	if not buf_has_content(state.buf) then
-		vim.fn.termopen(os.getenv("SHELL"), { cwd = file_dir })
+		local cwd = vim.fn.isdirectory(file_dir) == 1 and file_dir or vim.fn.getcwd()
+		vim.fn.termopen(os.getenv("SHELL"), { cwd = cwd })
 	end
 
 	state.is_open = true

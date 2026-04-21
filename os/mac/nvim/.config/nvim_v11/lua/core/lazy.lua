@@ -1,24 +1,15 @@
 --------------------------------------------------
--- Bootstrap lazy.nvim
+-- Bootstrap lazy.nvim — nvim 0.11
 --------------------------------------------------
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
--- prefer vim.uv (new API), fallback to vim.loop
 local uv = vim.uv or vim.loop
 
 if not uv.fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-
 	local out = vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"--branch=stable",
-		lazyrepo,
-		lazypath,
+		"git", "clone", "--filter=blob:none", "--branch=stable",
+		"https://github.com/folke/lazy.nvim.git", lazypath,
 	})
-
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_err_writeln("Failed to clone lazy.nvim:\n" .. out)
 		return
@@ -28,7 +19,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --------------------------------------------------
--- Plugins
+-- Plugin spec
+-- NOTE: lualine is intentionally excluded — custom statusline in ui/statusline.lua
 --------------------------------------------------
 
 require("lazy").setup({
@@ -36,10 +28,6 @@ require("lazy").setup({
 		{ import = "plugins" },
 		{ import = "themes" },
 	},
-	change_detection = {
-		notify = false,
-	},
-	install = {
-		colorscheme = { "gruvbox, " },
-	},
+	change_detection = { notify = false },
+	install = { colorscheme = { "gruvbox", "habamax" } },
 })

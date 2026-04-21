@@ -1,7 +1,7 @@
 return {
 	"norcalli/nvim-colorizer.lua",
 	config = function()
-		require("os.mac.nvim.config.nvim.lua.config.colorizer").setup({
+		require("colorizer").setup({
 			"css",
 			"scss",
 			"html",

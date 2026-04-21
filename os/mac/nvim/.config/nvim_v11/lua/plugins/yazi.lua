@@ -1,5 +1,5 @@
 --------------------------------------------------
--- File Management (Yazi) Configuration *
+-- File Management (Yazi) Configuration
 --------------------------------------------------
 
 return {
@@ -9,6 +9,6 @@ return {
         { "<leader>e", "<cmd>Yazi<cr>", desc = "Open Yazi" },
     },
     config = function()
-        require("os.mac.nvim.config.nvim.lua.config.yazi").setup()
+        require("yazi").setup()
     end,
 }

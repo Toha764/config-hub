@@ -1,21 +1,49 @@
 --------------------------------------------------
 -- Main Init File
--- Modularized NeoVim Configuration
+-- Modularized NeoVim Configuration — nvim 0.11
 --------------------------------------------------
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Transparent bg before any plugin loads
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+local function set_transparent()
+	local groups = {
+		"Normal",
+		"NormalNC",
+		"SignColumn",
+		"EndOfBuffer",
+		-- diagnostic signs (prevent red blocks in sign column)
+		"DiagnosticSignError",
+		"DiagnosticSignWarn",
+		"DiagnosticSignInfo",
+		"DiagnosticSignHint",
+		-- git signs (prevent colored blocks in sign column)
+		"GitSignsAdd",
+		"GitSignsChange",
+		"GitSignsDelete",
+		"GitSignsTopdelete",
+		"GitSignsChangedelete",
+		"GitSignsUntracked",
+	}
+	for _, g in ipairs(groups) do
+		vim.api.nvim_set_hl(0, g, { bg = "none" })
+	end
+end
 
--- Core
+set_transparent()
+
+-- Re-apply after ColorScheme changes (e.g. switching themes at runtime)
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = set_transparent,
+})
+
+-- Core (order matters: keymaps sets leader, options sets editor, lazy loads plugins)
 require("core.keymaps")
-require("core.lazy")
 require("core.options")
+require("core.lazy")
 
--- UI modules
+-- UI (loaded after plugins so highlights land on top)
+require("ui.statusline")
 require("ui.tabline").setup()
 require("ui.terminal").setup()

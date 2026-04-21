@@ -7,13 +7,13 @@
 #  1. Install Ollama:   https://ollama.com
 #  2. Pull model:       ollama pull mistral
 #  3. Make executable:  chmod +x llm-agent.sh
-#  4. Alias it:         echo 'alias ask="~/llm-agent.sh"' >> ~/.bashrc
+#  4. Alias it:  echo 'alias nlsh="~/.scripts/nlsh-linux.sh"' >> ~/.zshrc
 #
 #  USAGE
 #  -----
-#  One-shot:       ask "find what's eating disk space"
-#  Interactive:    ask
-#  Custom model:   MODEL=gemma3:4b ask "show open ports"
+#  One-shot:       nlsh "find what's eating disk space"
+#  Interactive:    nlsh
+#  Custom model:   MODEL=gemma3:4b nlsh "show open ports"
 #
 #  OUTPUT FORMAT
 #  -------------
@@ -29,14 +29,14 @@
 #
 #  CACHE
 #  -----
-#  Responses saved to ~/.scripts/llm_agent_cache.jsonl
-#  Use 'fask' to fuzzy-search history with fzf + preview
+#  Responses saved to ~/.scripts/nlsh-cache.jsonl
+#  Use 'fsh' to fuzzy-search history with fzf + preview
 # =============================================================================
 
+# --- config ---
 MODEL="${MODEL:-mistral}"
 CACHE_FILE="$HOME/.scripts/nlsh-cache.jsonl"
 
-# HP 450 G3: i5-6200U, 2 cores/4 threads — leave 1 thread for the OS
 export OLLAMA_NUM_THREAD=3
 
 # ── colors ────────────────────────────────────────────────────────────────────
@@ -48,9 +48,10 @@ BLD='\033[1m'
 RST='\033[0m'
 
 # ── system info ───────────────────────────────────────────────────────────────
-SYSINFO="$(uname -s) $(uname -r), shell: $(basename "$SHELL"), pkg: apt"
+SYSINFO="Linux, shell: $SHELL, pkg: apt"
 
 # ── logging ───────────────────────────────────────────────────────────────────
+mkdir -p "$(dirname "$CACHE_FILE")"
 log_to_cache() {
   local prompt="$1"
   local full_response="$2"
@@ -104,8 +105,8 @@ run_cmd() {
     echo -e "${RED}${BLD}⛔  Blocked — dangerous pattern matched${RST}"
     return
   fi
-
-  read -rp "Run? (y/n): " confirm
+  printf "Run? (y/n): "
+  read -r confirm
   if [[ "$confirm" == "y" ]]; then
     echo -e "${DIM}running: $cmd${RST}"
     eval "$cmd"

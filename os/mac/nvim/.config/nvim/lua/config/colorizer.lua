@@ -1,7 +1,11 @@
 require("colorizer").setup({
-  "*", -- all filetypes
+	css = {
+		rgb_fn = true,   -- rgb(255, 0, 0)
+		hsl_fn = true,   -- hsl(120, 100%, 50%)
+	},
+	html = { mode = "foreground" },
+	"javascript",
+	"typescript",
 }, {
-  RGB = true,
-  RRGGBB = true,
-  names = true,
+	mode = "background", -- color as background
 })

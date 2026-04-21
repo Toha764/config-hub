@@ -7,14 +7,14 @@
 #  1. Install Ollama:   https://ollama.com
 #  2. Pull model:       ollama pull bjoernb/gemma4-e4b-think:latest
 #  3. Make executable:  chmod +x llm-agent.sh
-#  4. Alias it:         echo 'alias ask="~/.scripts/llm-agent.sh"' >> ~/.zshrc
+#  4. Alias it:         echo 'alias fsh="~/.scripts/fzf-nlsh.sh"' >> ~/.zshrc
 #
 #  USAGE
 #  -----
-#  One-shot:       ask "find what's eating disk space"
-#  With mode:      ask --mode=net "show open ports"
-#  Interactive:    ask
-#  Custom model:   MODEL=gemma3:12b ask "show cpu temp"
+#  One-shot:       nlsh "find what's eating disk space"
+#  With mode:      nlsh --mode=net "show open ports"
+#  Interactive:    nlsh
+#  Custom model:   MODEL=gemma3:12b nlsh "show cpu temp"
 #
 #  MODES
 #  -----
@@ -41,12 +41,13 @@
 #
 #  CACHE
 #  -----
-#  Responses saved to ~/.scripts/llm_agent_cache.jsonl
-#  Use 'fask' to fuzzy-search history with fzf + preview
+#  Responses saved to ~/.scripts/nlsh-cache.jsonl
+#  Use 'fsh' to fuzzy-search history with fzf + preview
 # =============================================================================
 
 # ── configuration ─────────────────────────────────────────────────────────────
-MODEL="${MODEL:-bjoernb/gemma4-e4b-think:latest}"
+#MODEL="${MODEL:-bjoernb/gemma4-e4b-think:latest}"
+MODEL="${MODEL:-gemma4:e2b}"
 CACHE_FILE="$HOME/.scripts/nlsh-cache.jsonl"
 
 # ── colours ───────────────────────────────────────────────────────────────────
@@ -58,11 +59,7 @@ BLD='\033[1m'
 RST='\033[0m'
 
 # ── system context ────────────────────────────────────────────────────────────
-MACOS_VER=$(sw_vers -productVersion)
-CHIP=$( [[ $(uname -m) == "arm64" ]] && echo "Apple Silicon" || echo "Intel" )
-PKG_MGR=$(command -v brew &>/dev/null && echo "homebrew" || echo "none")
-RAM_GB=$(( $(sysctl -n hw.memsize) / 1024 / 1024 / 1024 ))
-SYSINFO="macOS ${MACOS_VER} (${CHIP}), shell: zsh, pkg: ${PKG_MGR}, RAM: ${RAM_GB}GB"
+SYSINFO="macOS, shell: zsh, pkg: brew"
 
 # ── mode definitions ──────────────────────────────────────────────────────────
 typeset -A MODES
@@ -72,10 +69,18 @@ MODES[proc]="macOS process/service commands. Use: ps, top, htop, lsof, kill, lau
 MODES[pkg]="Homebrew only. Use: brew install/upgrade/list/info/search/cleanup/doctor."
 
 # ── logging ───────────────────────────────────────────────────────────────────
+mkdir -p "$(dirname "$CACHE_FILE")"
 log_to_cache() {
   local prompt="$1"
   local full_response="$2"
-  local cmd=$(echo "$full_response" | head -n 1)
+  local cmd
+  cmd=$(echo "$full_response" | head -n 1 | sed 's/^[[:space:]]*//')
+
+  # skip if empty, markdown fence, or no real command
+  [[ -z "$cmd" ]] && return
+  [[ "$cmd" == \`\`\`* ]] && return
+  [[ "$cmd" == *"EFFECT"* ]] && return
+
   command -v jq &>/dev/null || return
   jq -cn \
     --arg p "$prompt" \
@@ -105,17 +110,20 @@ System: ${SYSINFO}
 Mode: ${MODE_CTX}
 
 Rules:
-1. Line 1: ONE shell command only. No markdown. No preamble.
-2. Lines 2+: each flag as "-x: meaning"
+1. First line: ONE shell command only. No markdown. No preamble.
+2. Lines 2+: each flag as ie. "-{flag_character}: meaning"
 3. Last line: "EFFECT: one sentence"
-4. If dangerous: start line 1 with [DESTRUCTIVE]
+4. Use common Linux commands only. Prefer simple over complex.
 
 Request: $1
 PROMPT
 }
 
 call_model() {
-  build_prompt "$1" | ollama run "$MODEL" --think=false | col -b
+  build_prompt "$1" | ollama run "$MODEL" --think=false \
+    | sed 's/\x1b\[[0-9;]*[mGKHF]//g' \
+    | sed 's/\[[0-9]*[DGKM]//g' \
+    | sed 's/\r//g'
 }
 
 # ── execution ─────────────────────────────────────────────────────────────────
@@ -124,12 +132,6 @@ run_response() {
   local first_line=$(echo "$response" | head -1)
 
   echo
-
-  if ! check_tool_available "$first_line"; then
-    local binary=$(echo "${first_line#\[DESTRUCTIVE\] }" | awk '{print $1}' | xargs basename 2>/dev/null)
-    echo -e "${YLW}${BLD}Tool not available:${RST} ${YLW}'${binary}' is not installed.${RST}"
-    return
-  fi
 
   if echo "$first_line" | grep -q "\[DESTRUCTIVE\]"; then
     echo -e "${RED}${BLD}⚠  DESTRUCTIVE OPERATION${RST}"
@@ -147,6 +149,7 @@ run_response() {
   fi
   echo
 }
+
 
 # ── entry ─────────────────────────────────────────────────────────────────────
 check_ollama() {

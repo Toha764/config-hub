@@ -1,5 +1,5 @@
 --------------------------------------------------
--- Treesitter Configuration ***
+-- Treesitter Configuration
 --------------------------------------------------
 return {
 	"nvim-treesitter/nvim-treesitter",
@@ -20,8 +20,8 @@ return {
 				"query",
 				"markdown",
 				"markdown_inline",
-				"python", -- Added for Python highlighting
-				"javascript", -- Common languages
+				"python",
+				"javascript",
 				"typescript",
 				"go",
 				"rust",
@@ -32,9 +32,9 @@ return {
 			},
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = false, -- Disable for better performance
+				additional_vim_regex_highlighting = false,
 			},
-			indent = { enable = true }, -- Better indentation
+			indent = { enable = true },
 		})
 	end,
 }

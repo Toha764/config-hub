@@ -31,29 +31,29 @@ echo -e "\e[35m
 
 
 ### Aliases ###
-
+# --- quick commands ---
+alias c="clear"
+alias nv="nvim"
+alias yz="yazi"
 alias src='source ~/.zshrc'
 alias rc='nvim $HOME/.zshrc'
 alias ip='curl -s ipinfo.io'
+alias lip="ifconfig | awk '/inet /{print $2}'"
 
-# quality of life
-alias c="clear"
-alias nv="nvim"
+# --- SUPER CUSTOM COMMANDS ---
 alias cat="batcat"
-alias yz="yazi"
-
 # alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
-alias ask="~/.scripts/llm-agent-linux.sh"
-
+alias tk="taskwarrior-tui"
 alias tx="tmux attach 2>/dev/null || tmux new-session -s main"
-# fuzzy-everything
-alias lo='source ~/.scripts/fzf-oldfiles-linux.sh'                                    # fuzzy last opened
-alias fv="nvim \$(fzf --preview 'bat --color=always {}')"                      # fuzzy nvim
-alias fcd="cd \$(fd --type d | fzf --preview 'eza --tree --color=always {}')"  # fuzzy change dir
-alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill"                    # fuzzy kill process
-alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man
-alias fask='source ~/.scripts/fzf-ask.sh'                                      # fuzzy ask search
+alias nlsh="~/.scripts/nlsh-linux.sh"
 
+### Fuzzy Obessesion ###
+alias lo='source ~/.scripts/fzf-oldfiles.sh'                  # fuzzy recent files (script based)
+alias fv="nvim \$(fzf --preview 'bat --color=always {}')"                      # fuzzy open file
+alias fcd="cd \$(fd --type d | fzf --preview 'eza --tree --color=always {}')"  # fuzzy cd
+alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill"                    # fuzzy kill process
+alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man search
+alias fsh='source ~/.scripts/fzf-nlsh.sh'                                      # fuzzy ask search
 
 # git 
 alias ga="git add ."

@@ -1,5 +1,5 @@
 --------------------------------------------------
--- Smear Cursor Configuration *
+-- Smear Cursor Configuration
 --------------------------------------------------
 
 return {
