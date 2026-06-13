@@ -100,5 +100,29 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- auto-trim trailing whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = augroup,
+	callback = function()
+		if vim.bo.buftype == "" then
+			MiniTrailspace.trim()
+		end
+	end,
+})
+
+-- relative number toggle: absolute in insert, relative in normal
+vim.api.nvim_create_autocmd("InsertEnter", {
+	group = augroup,
+	callback = function()
+		vim.opt_local.relativenumber = false
+	end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+	group = augroup,
+	callback = function()
+		vim.opt_local.relativenumber = true
+	end,
+})
+
 -- expose augroup for other modules that need it (lsp, terminal)
 return augroup

@@ -1,0 +1,83 @@
+#!/usr/bin/env sh
+
+# FILLED_CHAR="•"; EMPTY_CHAR="◦"
+# FILLED_CHAR="■"; EMPTY_CHAR="□"
+# FILLED_CHAR="█"; EMPTY_CHAR="░"
+# FILLED_CHAR="▓"; EMPTY_CHAR="░"
+# FILLED_CHAR="▮"; EMPTY_CHAR="▯"
+# FILLED_CHAR="▬"; EMPTY_CHAR="▭"
+# FILLED_CHAR="▌"; EMPTY_CHAR="▏"
+# FILLED_CHAR="▍"; EMPTY_CHAR="▁"
+# FILLED_CHAR="┃"; EMPTY_CHAR="│"
+# FILLED_CHAR="◆"; EMPTY_CHAR="◇"
+# FILLED_CHAR="⬤"; EMPTY_CHAR="◯"
+# FILLED_CHAR="⬛"; EMPTY_CHAR="⬜"
+# FILLED_CHAR="▶"; EMPTY_CHAR="▷"
+# FILLED_CHAR="▸"; EMPTY_CHAR="▹"
+# FILLED_CHAR="★"; EMPTY_CHAR="☆"
+# FILLED_CHAR="✦"; EMPTY_CHAR="✧"
+
+# ── practical picks ─────────────────────────
+# FILLED_CHAR="▰"; EMPTY_CHAR="▱"   # balanced, calm
+# FILLED_CHAR="█"; EMPTY_CHAR="░"   # strongest contrast
+# FILLED_CHAR="●"; EMPTY_CHAR="○"   # minimal + clean
+# FILLED_CHAR="▁";  EMPTY_CHAR="·"
+
+#---------- config -----------------
+FILLED_CHAR="•"; EMPTY_CHAR="◦"
+SPAN="hour"          # "hour" (1-hour progress) or "day" (custom range)
+TOTAL_BLOCKS=12      # total blocks across both sides, defines a unit 
+
+# --- used when span="day" ---
+START_HOUR=8         # Start of day (ie. 8 = morning )
+END_HOUR=24          # End of day  (ie. 24 = midnight)
+# recommended: match delta of day = total blocks
+
+# --- colors (0xAARRGGBB) ---
+COLOR_LEFT="0xFFFFFFFF"    
+COLOR_RIGHT="0xFFFFFFFF"   
+COLOR_EMPTY="0xFF3A3A3E"   # Grey 
+#------------------------------------
+
+HOUR=$(date +%-H)
+MINUTE=$(date +%-M)
+
+if [ "$SPAN" = "day" ]; then
+  # day logic 
+  NOW=$(echo "$HOUR + $MINUTE / 60" | bc -l)
+  RANGE=$(echo "$END_HOUR - $START_HOUR" | bc -l)
+
+  if (( $(echo "$NOW < $START_HOUR" | bc -l) )); then
+    PROGRESS=0
+  elif (( $(echo "$NOW > $END_HOUR" | bc -l) )); then
+    PROGRESS=1
+  else
+    PROGRESS=$(echo "scale=6; ($NOW - $START_HOUR) / $RANGE" | bc)
+  fi
+else
+# hour logic
+  PROGRESS=$(echo "scale=6; $MINUTE / 60" | bc)
+fi
+
+HALF=$(( TOTAL_BLOCKS / 2 ))
+
+FILLED=$(printf "%.0f" "$(echo "$PROGRESS * $TOTAL_BLOCKS" | bc -l)")
+(( FILLED < 0 ))            && FILLED=0
+(( FILLED > TOTAL_BLOCKS )) && FILLED=$TOTAL_BLOCKS
+
+LEFT_FILLED=$(( FILLED < HALF ? FILLED : HALF ))
+LEFT_EMPTY=$(( HALF - LEFT_FILLED ))
+RIGHT_FILLED=$(( FILLED > HALF ? FILLED - HALF : 0 ))
+RIGHT_EMPTY=$(( HALF - RIGHT_FILLED ))
+
+build() {
+  local char=$1 count=$2 out=""
+  for ((i=0; i<count; i++)); do out="${out}${char}"; done
+  echo "$out"
+}
+
+sketchybar \
+  --set tp_left_filled  label="$(build $FILLED_CHAR $LEFT_FILLED)"  label.color=$COLOR_LEFT \
+  --set tp_left_empty   label="$(build $EMPTY_CHAR  $LEFT_EMPTY)"   label.color=$COLOR_EMPTY \
+  --set tp_right_filled label="$(build $FILLED_CHAR $RIGHT_FILLED)" label.color=$COLOR_RIGHT \
+  --set tp_right_empty  label="$(build $EMPTY_CHAR  $RIGHT_EMPTY)"  label.color=$COLOR_EMPTY

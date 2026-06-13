@@ -77,6 +77,10 @@
       "rev": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b",
       "src": "https://github.com/sphamba/smear-cursor.nvim"
     },
+    "vision.nvim": {
+      "rev": "af61e743cd558363f5747cd073c916abd408b1e7",
+      "src": "https://github.com/azorng/vision.nvim"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://www.github.com/folke/which-key.nvim"

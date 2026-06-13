@@ -13,18 +13,18 @@ Feel free to contribute here. Main goal:
   Free + Paid Course Hub.
 - [Everything you ever need](https://fmhy.net/)
   Everything you would EVER need.
-- [Awesome](https://github.com/sindresorhus/awesome)  
+- [Awesome](https://github.com/sindresorhus/awesome)
   Curated lists of resources for almost any programming topic.
-- [Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)  
+- [Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
   Roadmaps for different tech careers and stacks with pointers to more underrated resources.
-- [Best Websites for Programmers](https://github.com/sdmg15/Best-websites-a-programmer-should-visit)  
+- [Best Websites for Programmers](https://github.com/sdmg15/Best-websites-a-programmer-should-visit)
   Curated useful websites for developers.
 
 ---
 
 ### Data Structures & Algorithms (DSA)
 
-- [The Algorithms](https://github.com/TheAlgorithms)  
+- [The Algorithms](https://github.com/TheAlgorithms)
   Data structures and algorithms implemented in many languages.
 - [Big-O Algorithm Complexity Cheat Sheet](https://www.bigocheatsheet.com/)
 - [Data Structure Visualization (USFCA)](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
@@ -89,17 +89,19 @@ Feel free to contribute here. Main goal:
 - [University of Helsinki: Full Stack Dev](https://fullstackopen.com/)
 - [Interneting is Hard](https://internetingishard.netlify.app/)
   More HTML CSS
-- [System Design Primer](https://github.com/donnemartin/system-design-primer)  
+- [System Design Primer](https://github.com/donnemartin/system-design-primer)
   Learn how to design scalable systems.
-- [Public APIs](https://github.com/public-apis/public-apis)  
+- [Public APIs](https://github.com/public-apis/public-apis)
   Free APIs for projects and experimentation.
 - [CodePen: A Sandbox for Html, CSS](https://codepen.io/pen/)
+  Specific Tools
+- [CSS Anchoring](https://anchoreum.com/)
 
 ---
 
 ### Books, Documentation & Reference
 
-- [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  
+- [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)
   Massive collection of free books, courses, and cheat sheets.
 - [The Linux Command Handbook](https://www.freecodecamp.org/news/the-linux-commands-handbook/#heading-the-linux-nohup-command)
 - [Devhints](https://devhints.io/)
@@ -110,9 +112,9 @@ Feel free to contribute here. Main goal:
 
 ### ML, AI, Deep Learning
 
-- [LLMs From Scratch](https://github.com/rasbt/LLMs-from-scratch)  
+- [LLMs From Scratch](https://github.com/rasbt/LLMs-from-scratch)
   Build large language models step by step.
-- [ML From Scratch](https://github.com/eriklindernoren/ML-From-Scratch)  
+- [ML From Scratch](https://github.com/eriklindernoren/ML-From-Scratch)
   Core machine learning algorithms implemented manually.
 - [ML Visualized](https://ml-visualized.com/index.html)
   Machine Learning Course Visualization
@@ -120,7 +122,7 @@ Feel free to contribute here. Main goal:
 - [Pytorch](https://www.learnpytorch.io/)
 - [Applied Data Science with Python - FreeCodeCamp](https://www.freecodecamp.org/news/applied-data-science-with-python-book/)
 - [Deep Learning by UvA](https://uvadlc-notebooks.readthedocs.io/en/latest/index.html)
-- [Made With ML](https://github.com/GokuMohandas/Made-With-ML)  
+- [Made With ML](https://github.com/GokuMohandas/Made-With-ML)
   Practical guide to production ready ML systems.
 - [DL Project & Theory w/ Mahdid](https://www.youtube.com/@deeplearningexplained)
 ---
@@ -132,7 +134,7 @@ Feel free to contribute here. Main goal:
   Open-source replacements & homelabbing.
 - [Tech Interview Handbook](https://github.com/yangshun/tech-interview-handbook)
 - [Awesome Research](https://github.com/emptymalei/awesome-research)
-- [Free for Dev](https://github.com/ripienaar/free-for-dev)  
+- [Free for Dev](https://github.com/ripienaar/free-for-dev)
   Free-tier services for developers.
 - [He Make Good Notes, worth checking](https://github.com/darshanime/notes/blob/master/operating_systems.org)
 
@@ -156,7 +158,7 @@ Feel free to contribute here. Main goal:
 
 ### **Papers, Blogs, Articles & Latest Tech Stuff**
 
-[Papers We Love](https://github.com/papers-we-love/papers-we-love)  
+[Papers We Love](https://github.com/papers-we-love/papers-we-love)
  Important CS papers and reading guides.
 
 **Research Paper Indices**
@@ -177,10 +179,13 @@ Feel free to contribute here. Main goal:
 ### Other Stuff
 
 - [How Does CPU Work?](https://cpu.land/)
-  Learn how multiprocessing works, what system calls really are, how computers manage memory 
+  Learn how multiprocessing works, what system calls really are, how computers manage memory
+- [Virtual Memory](https://blog.codingconfessions.com/p/virtual-memory)
+  Dialogue Based Learning on Memory in Depth
 - [NAND2Tetris Web IDE](https://nand2tetris.github.io/web-ide/chip/)
   Has Assembler, Verilog Like IDE on the WEB.
 - [Devpost Hackathons](https://devpost.com/hackathons?page=2)
   Some Hackathons
 - [Robotics in Python](https://github.com/AtsushiSakai/PythonRobotics?tab=readme-ov-file#what-is-this)
 - [Learn Git Visually](https://learngitbranching.js.org/)
+- [How Servers Work](https://labs.iximiuz.com/tutorials/how-servers-work-tcp-sockets)

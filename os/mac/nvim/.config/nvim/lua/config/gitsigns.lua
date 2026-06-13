@@ -17,12 +17,12 @@ require("gitsigns").setup({
 
 require("mason").setup({})
 
-vim.keymap.set("n", "]h", function()
+vim.keymap.set("n", "]c", function()
 	require("gitsigns").next_hunk()
-end, { desc = "Next git hunk" })
-vim.keymap.set("n", "[h", function()
+end, { desc = "Next git hunk" }) -- Zed: ]c
+vim.keymap.set("n", "[c", function()
 	require("gitsigns").prev_hunk()
-end, { desc = "Previous git hunk" })
+end, { desc = "Previous git hunk" }) -- Zed: [c
 vim.keymap.set("n", "<leader>hs", function()
 	require("gitsigns").stage_hunk()
 end, { desc = "Stage hunk" })

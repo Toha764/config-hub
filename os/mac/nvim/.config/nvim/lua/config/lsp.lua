@@ -51,39 +51,62 @@ local function lsp_on_attach(ev)
 	local bufnr = ev.buf
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
-	vim.keymap.set("n", "<leader>gd", function()
+	-- ── Zed-aligned LSP keys ────────────────────────────────────────
+	vim.keymap.set("n", "gd", function()
 		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+	end, opts) -- Zed: gd
+
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- Zed: gD
+
+	vim.keymap.set("n", "gy", function()
+		require("fzf-lua").lsp_typedefs()
+	end, opts) -- Zed: gy
+
+	vim.keymap.set("n", "gI", function()
+		require("fzf-lua").lsp_implementations()
+	end, opts) -- Zed: gI
+
+	vim.keymap.set("n", "gA", function()
+		require("fzf-lua").lsp_references()
+	end, opts) -- Zed: gA
+
+	vim.keymap.set("n", "gs", function()
+		require("fzf-lua").lsp_document_symbols()
+	end, opts) -- Zed: gs
+
+	vim.keymap.set("n", "gS", function()
+		require("fzf-lua").lsp_workspace_symbols()
+	end, opts) -- Zed: gS
+
+	vim.keymap.set("n", "cd", vim.lsp.buf.rename, opts) -- Zed: cd (rename)
+	vim.keymap.set("n", "g.", vim.lsp.buf.code_action, opts) -- Zed: g. (code action)
+
+	vim.keymap.set("n", "gh", function()
+		vim.diagnostic.open_float({ scope = "cursor" })
+	end, opts) -- Zed: gh (hover diagnostic)
+
+	vim.keymap.set("n", "<leader>D", function()
+		vim.diagnostic.open_float({ scope = "line" })
 	end, opts)
 
-	vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
+	-- ── Zed-aligned diagnostic navigation ──────────────────────────
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.jump({ count = 1 })
+	end, opts) -- Zed: ]d
 
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.jump({ count = -1 })
+	end, opts) -- Zed: [d
+
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+	-- ── Neovim-only: go-to-def in vsplit ───────────────────────────
 	vim.keymap.set("n", "<leader>gS", function()
 		vim.cmd("vsplit")
 		vim.lsp.buf.definition()
 	end, opts)
 
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-	vim.keymap.set("n", "<leader>D", function()
-		vim.diagnostic.open_float({ scope = "line" })
-	end, opts)
-	vim.keymap.set("n", "<leader>d", function()
-		vim.diagnostic.open_float({ scope = "cursor" })
-	end, opts)
-	vim.keymap.set("n", "<leader>nd", function()
-		vim.diagnostic.jump({ count = 1 })
-	end, opts)
-
-	vim.keymap.set("n", "<leader>pd", function()
-		vim.diagnostic.jump({ count = -1 })
-	end, opts)
-
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-	vim.keymap.set("n", "<leader>fd", function()
-		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
-	end, opts)
+	-- ── Secondary fzf-lua access (keep for multi-result browsing) ──
 	vim.keymap.set("n", "<leader>fr", function()
 		require("fzf-lua").lsp_references()
 	end, opts)
@@ -158,7 +181,11 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
-vim.lsp.config("pyright", {})
+vim.lsp.config("pyright", {
+	handlers = {
+		["$/progress"] = function() end, -- suppress noisy progress notifications
+	},
+})
 vim.lsp.config("bashls", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("gopls", {})

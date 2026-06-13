@@ -1,4 +1,4 @@
-### Oh My Zsh & Plugins 
+### Oh My Zsh & Plugins
 ZSH_THEME="robbyrussell"
 
 plugins=(
@@ -20,11 +20,11 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 setopt histignorealldups sharehistory
 
-# ~Nyaan 
+# ~Nyaan
 echo -e "\e[35m
-                    /\_/\  
-                   ( o.o ) 
-                    > ^ < 
+                    /\_/\
+                   ( o.o )
+                    > ^ <
 
         -- meow 2
 \e[0m"
@@ -55,7 +55,7 @@ alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill"                    #
 alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man search
 alias fsh='source ~/.scripts/fzf-nlsh.sh'                                      # fuzzy ask search
 
-# git 
+# git
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'

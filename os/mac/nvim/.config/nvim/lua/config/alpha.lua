@@ -21,7 +21,7 @@ dashboard.section.header.opts.hl = "AlphaHeader"
 dashboard.section.buttons.val = {
   dashboard.button("e", "  New file", ":ene <CR>"),
   dashboard.button("f", "  Find file", ":lua require('fzf-lua').files()<CR>"),
-  dashboard.button("l", "</ Leet code", ":Leet<CR>"),
+  dashboard.button("l", "<> Leet code", ":Leet<CR>"),
   dashboard.button("q", "⏻ Quit", ":qa<CR>"),
 }
 

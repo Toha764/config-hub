@@ -1,3 +1,5 @@
+vim.deprecate = function() end
+
 require("config.theme") -- colorscheme + transparency
 require("config.options") -- vim.opt settings
 require("config.keymaps") -- keybindings
@@ -21,3 +23,15 @@ require("config.terminal") -- floating terminal
 require("config.mini")
 require("config.markdown")
 require("config.smear-cursor") -- smear cursor effect
+
+require("vision").setup({
+  selection = {
+    clear_after_send = true,
+  },
+  context = {
+    current_file = true,
+    cursor = false,
+    current_line = false,
+    diagnostics = false,
+  },
+})

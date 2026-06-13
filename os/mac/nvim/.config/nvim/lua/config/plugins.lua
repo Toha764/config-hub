@@ -41,6 +41,9 @@ vim.pack.add({
 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
 	{ src = "https://github.com/kawre/leetcode.nvim" },
 	{ src = "https://github.com/sphamba/smear-cursor.nvim" },
+
+    -- test
+    { src =  "https://github.com/azorng/vision.nvim"},
 })
 
 -- ============================================================================
@@ -76,3 +79,6 @@ packadd("efmls-configs-nvim")
 packadd("blink.cmp")
 packadd("LuaSnip")
 packadd("smear-cursor.nvim")
+
+-- extra
+packadd("vision.nvim")

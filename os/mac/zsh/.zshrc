@@ -10,11 +10,12 @@ plugins=(
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # ~Nyaan (IMPORTANT! shell session won't open without it!, obviously :3 )
-echo -e "\e[35m
-                    /\_/\  
-                   ( o.o ) 
-                    > ^ <  
-\e[0m"
+printf '\e[35m
+                    /\_/\\
+                   ( o.o )
+                    > ^ <
+\e[0m
+'
 
 ### Some vanilla zsh-config stolen from Kali Linux ###
 # --- Navigation ---
@@ -82,7 +83,6 @@ alias yz="yazi"
 # --- SUPER CUSTOM COMMANDS ---
 alias cat="bat"
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
-alias tk="taskwarrior-tui"
 alias tx="tmux attach 2>/dev/null || tmux new-session -s main"
 alias nlsh="~/.scripts/nlsh-mac.sh"
 alias ask="\"/Users/toha/100 Projects/30 Py, Go, CLI/ask-bot/venv/bin/python\" \"/Users/toha/100 Projects/30 Py, Go, CLI/ask-bot/ask.py\""
@@ -100,6 +100,6 @@ alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
 alias gp='git push origin main'
-alias glog='git log --oneline --graph --all'
+alias gl='git log --oneline --graph --all'
 alias gcreate='gh repo create --private --source=. --remote=origin'
 
