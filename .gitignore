@@ -1,4 +1,5 @@
 *.jsonl
+./prompts-skills/
 /wallpapers/
 
 
