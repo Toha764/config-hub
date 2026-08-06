@@ -1,0 +1,87 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j j": "vim::NormalBefore",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // ── Save (matches Neovim <leader>w) ──
+      "space w": "workspace::Save",
+
+      // ── File explorer (matches Neovim <leader>e) ──
+      "space e": "project_panel::ToggleFocus",
+      "space a": "agent::ToggleFocus",
+
+      // ── Fuzzy finders (matches Neovim <leader>f* via fzf-lua) ──
+      "space f f": "file_finder::Toggle",
+      "space f g": "workspace::NewSearch",
+      "space f b": "tab_switcher::Toggle",
+      "space f x": "diagnostics::Deploy",
+      "space f s": "outline::Toggle",
+      "space f w": "project_symbols::Toggle",
+
+      // ── Buffer management ──
+      "space b d": "pane::CloseActiveItem",
+
+      // ── Diagnostics ──
+      "space t d": "editor::ToggleDiagnostics",
+
+      // ── Terminal ──
+      "space t t": "terminal_panel::ToggleFocus",
+
+      // ── Line movement (matches Neovim Alt-j/k) ──
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      // ── Line movement in visual mode ──
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "shift-s": "vim::PushAddSurrounds",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // ── Window navigation (matches Neovim Ctrl-h/j/k/l) ──
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+    },
+  },
+]

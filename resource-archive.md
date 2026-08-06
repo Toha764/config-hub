@@ -60,6 +60,8 @@ Feel free to contribute here. Main goal:
 - [Sql Practise (zoo)](https://sqlzoo.net/wiki/SQL_Tutorial)
   SQL Reference & Practise.
 - [More SQL Reference](https://sqlbolt.com/)
+- [Implementation of the Same Algo in different languages](https://rosettacode.org/wiki/Rosetta_Code)
+- [NAND2Tetris Web IDE](https://nand2tetris.github.io/web-ide/chip/)
 
 ---
 
@@ -69,7 +71,9 @@ Feel free to contribute here. Main goal:
 - [The CTF Primer (Beginner Friendly)](https://primer.picoctf.org/#_asymmetric_crypto_example_rsa)
 - [OverTheWire: Bandit Level 0](https://overthewire.org/wargames/bandit/bandit0.html)
 - [Cyber Security Base 2025](https://cybersecuritybase.mooc.fi/)
-- [Web Security](https://portswigger.net/web-security)
+- [Learn Cryptography (Practical Course)](https://www.crypto101.io/)
+- [Cryptography Challenges](https://cryptopals.com/)
+- [Web Security by Portswigger](https://portswigger.net/web-security)
 - [How to Secure Anything](https://github.com/veeral-patel/how-to-secure-anything)
 
 **Tools:**
@@ -97,9 +101,21 @@ Feel free to contribute here. Main goal:
   Specific Tools & Concepts
 - [CSS Anchoring](https://anchoreum.com/)
 - [CSS Cascading](https://2019.wattenberger.com/blog/css-cascade)
+- [Next.js & React Open Source Projects](https://www.linkedin.com/feed/update/urn:li:activity:7256616376805597184/)
+- [REST API Designing Best Practices](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design)
 
 ---
 
+### Computer Systems, OS, & Architecture
+
+- [Process vs Thread](https://planetscale.com/blog/processes-and-threads)
+- [How Does CPU Work?](https://cpu.land/)
+  Learn how multiprocessing works, what system calls really are, how computers manage memory
+- [Virtual Memory](https://blog.codingconfessions.com/p/virtual-memory)
+  Dialogue Based Learning on Memory in Depth
+- [How Servers Work?](https://labs.iximiuz.com/tutorials/how-servers-work-tcp-sockets)
+- [Bridge Networking From Scratch](https://labs.iximiuz.com/tutorials/container-networking-from-scratch)
+---
 ### Books, Documentation & Reference
 
 - [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)
@@ -108,9 +124,9 @@ Feel free to contribute here. Main goal:
 - [Devhints](https://devhints.io/)
 - [ChaiCode Docs](https://docs.chaicode.com/home-for-programmers/)
 - [adit.io](https://www.adit.io/)
+- [Learn Git Visually](https://learngitbranching.js.org/)
 
----
-
+  ---
 ### ML, AI, Deep Learning
 
 - [LLMs From Scratch](https://github.com/rasbt/LLMs-from-scratch)
@@ -128,7 +144,7 @@ Feel free to contribute here. Main goal:
 - [DL Project & Theory w/ Mahdid](https://www.youtube.com/@deeplearningexplained)
 ---
 
-### Must "Chekout" Repos
+### Recommended Repos
 
 - [List of TUI Based Applications](https://github.com/ratatui/awesome-ratatui)
 - [Awesome Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted)
@@ -147,22 +163,12 @@ Feel free to contribute here. Main goal:
 
 ---
 
-### Mathematics Resources
-
-- [ProfRobBob](https://www.youtube.com/@profrobbob)
-- [Professor Leonard](https://www.youtube.com/@ProfessorLeonard)
-- [Dr Trefor](https://www.youtube.com/@DrTrefor)
-- [3b1b](https://www.youtube.com/@3blue1brown)
-
-- [Algebrica](https://algebrica.org/)
-  An ontological graph based minimal math archive
-
 ### **Papers, Blogs, Articles & Latest Tech Stuff**
 
 [Papers We Love](https://github.com/papers-we-love/papers-we-love)
  Important CS papers and reading guides.
 
-**Research Paper Indices**
+**Research Papers**
 
 - **[Google Scholar](https://scholar.google.com/)** The "Google" of academic papers.
 - **[Microsoft Academic](https://www.microsoft.com/en-us/research/project/microsoft-academic-graph/)**
@@ -171,22 +177,44 @@ Feel free to contribute here. Main goal:
 - **[PubMed](https://pubmed.ncbi.nlm.nih.gov/)** central hub for life sciences and biomedical topics.
 - **[arXiv](https://arxiv.org/)** papers released before peer review, mainly in Math, CS, and Physics
 
-**Blogs**
+**Blogs & Competitions**
 
+- [Devpost Hackathons](https://devpost.com/hackathons?page=2)
+  Some Hackathons
 - [Engineering Blogs](https://github.com/kilimchoi/engineering-blogs)
 
 ---
+### Misc
 
-### Other Stuff
-
-- [How Does CPU Work?](https://cpu.land/)
-  Learn how multiprocessing works, what system calls really are, how computers manage memory
-- [Virtual Memory](https://blog.codingconfessions.com/p/virtual-memory)
-  Dialogue Based Learning on Memory in Depth
-- [NAND2Tetris Web IDE](https://nand2tetris.github.io/web-ide/chip/)
-  Has Assembler, Verilog Like IDE on the WEB.
-- [Devpost Hackathons](https://devpost.com/hackathons?page=2)
-  Some Hackathons
 - [Robotics in Python](https://github.com/AtsushiSakai/PythonRobotics?tab=readme-ov-file#what-is-this)
-- [Learn Git Visually](https://learngitbranching.js.org/)
-- [How Servers Work](https://labs.iximiuz.com/tutorials/how-servers-work-tcp-sockets)
+- [Algebrica](https://algebrica.org/)
+  An ontological graph based minimal math archive
+- [Physics, Math, & Engineering Visualization](https://www.falstad.com)
+
+---
+### People & Channels to Follow
+
+**Computer Science**
+- https://www.youtube.com/@SebastianLague
+- https://www.youtube.com/@benjdicken
+- https://www.youtube.com/@ByteByteGo
+- https://www.youtube.com/@visualkernel
+- https://www.youtube.com/@ArtemKirsanov
+- https://www.youtube.com/@Computerphile
+**Software Engineering**
+- https://www.youtube.com/@ThePrimeTimeagen
+- https://www.youtube.com/@BenVallack
+- https://www.youtube.com/@sriniously
+- https://www.youtube.com/@diegoarias-tech
+**Security**
+- https://www.youtube.com/@LowLevelTV
+**Mathematics**
+- [3b1b the OG](https://www.youtube.com/@3blue1brown)
+- https://www.youtube.com/@MichaelPennMath
+- https://www.youtube.com/@numberphile
+- https://www.youtube.com/@profrobbob
+- https://www.youtube.com/@ProfessorLeonard
+- https://www.youtube.com/@DrTrefor
+**Others**
+- https://www.youtube.com/@veritasium
+

@@ -1,0 +1,87 @@
+{
+  "agent_ui_font_size": 16.0,
+  "buffer_line_height": "comfortable",
+  "edit_predictions": {
+    "provider": "zed",
+  },
+  "diff_view_style": "unified",
+  "disable_ai": false,
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 15.0,
+  "buffer_font_size": 22.0,
+  "relative_line_numbers": "enabled",
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Gruvbox Dark Hard",
+  },
+  "terminal": {
+    "default_height": 500.0,
+    "font_size": 20.0,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "proxy": "",
+  "show_edit_predictions": true,
+  "language_models": {
+    "ollama": {
+      "api_url": "http://127.0.0.1:11434",
+    },
+  },
+  "agent": {
+    "enabled": true,
+    "dock": "right",
+    "sidebar_side": "right",
+    "button": true,
+    "flexible": false,
+    "default_model": {
+      "enable_thinking": false,
+      "provider": "google",
+      "model": "gemini-3-flash-preview",
+    },
+    "model_parameters": [],
+  },
+  "project_panel": {
+    "dock": "left",
+    "button": true,
+    "default_width": 200,
+    "sort_mode": "directories_first",
+    "git_status_indicator": false,
+    "hide_root": true,
+    "bold_folder_labels": false,
+    "auto_reveal_entries": true,
+    "indent_size": 25,
+    "entry_spacing": "comfortable",
+    "hide_hidden": true,
+    "auto_fold_dirs": false,
+  },
+  "status_bar": {
+    "show_active_file": false,
+    "active_language_button": false,
+    "experimental.show": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "scrollbar": {
+    "axes": {
+      "vertical": false,
+    },
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "colorize_brackets": false,
+  "soft_wrap": "editor_width",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+}

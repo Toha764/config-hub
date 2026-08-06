@@ -8,6 +8,6 @@ path = "~/dotfiles"
 startup_command = "yazi"
 
 [[session]]
-name = "nvim"
-path = "~/"
-startup_command = "nvim"
+name = "ps"
+path = "~/200 Areas/Problem Solving Index/"
+startup_command = "yazi"

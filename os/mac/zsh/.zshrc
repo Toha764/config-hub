@@ -103,3 +103,6 @@ alias gp='git push origin main'
 alias gl='git log --oneline --graph --all'
 alias gcreate='gh repo create --private --source=. --remote=origin'
 
+
+# Added by Antigravity IDE
+export PATH="/Users/toha/.antigravity-ide/antigravity-ide/bin:$PATH"
