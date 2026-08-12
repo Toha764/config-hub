@@ -55,6 +55,7 @@ stow -d <source directory> -t ~ <package>
 
 - `-d` is where Stow looks for packages (defaults to the current directory)
 - `-t` is where Stow creates the symlinks (your home directory)
+
 **Apply everything for your OS at once:**
 
 ```bash

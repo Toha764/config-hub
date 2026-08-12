@@ -6,6 +6,7 @@ tags: [linux, cli, tools, reference]
 # CLI Tools
 
 > Favorites: bat, fzf, zoxide, tldr, yazi
+> Mac Specific: mole, mackup, unp
 
 ## Core Replacements
 
