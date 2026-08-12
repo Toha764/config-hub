@@ -1,4 +1,8 @@
 {
+  "agent_ui_font_family": ".ZedMono",
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
   "agent_ui_font_size": 16.0,
   "buffer_line_height": "comfortable",
   "edit_predictions": {
@@ -8,16 +12,12 @@
   "disable_ai": false,
   "vim_mode": true,
   "base_keymap": "VSCode",
-  "ui_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": ".ZedMono",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "ui_font_size": 15.0,
-  "buffer_font_size": 22.0,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 16.0,
   "relative_line_numbers": "enabled",
-  "theme": {
-    "mode": "dark",
-    "light": "Catppuccin Latte",
-    "dark": "Gruvbox Dark Hard",
-  },
+  "theme": "Gruvbox Dark Hard",
   "terminal": {
     "default_height": 500.0,
     "font_size": 20.0,
@@ -80,7 +80,7 @@
   "colorize_brackets": false,
   "soft_wrap": "editor_width",
   "icon_theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "Zed (Default)",
     "dark": "Zed (Default)",
   },

@@ -1,78 +1,133 @@
-# Dotfiles Setup 
+# Dotfiles Setup
 
-This repo uses GNU Stow to symlink config files into your home directory (`~`) instead of copying them.
----
+Personal config files, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-## 1. Install Stow
-
-* macOS:
-  ```
-  brew install stow
-  ```
-* Linux:
-  ```
-  sudo apt install stow
-  ```
----
-
-## 2. Clone the repo
+## Structure
 ```
+dotfiles/
+├── os-specific/
+│   ├── mac/
+│   │   ├── zsh/
+│   │   │   └── .zshrc
+│   │   └── ...
+│   └── linux/
+│       ├── zsh/
+│       │   └── .zshrc
+│       └── ...
+└── os-agnostic/
+    ├── tmux/
+    │   └── .tmux.conf
+    ├── ghostty/
+    │   └── ...
+    └── yazi/
+        └── ...
+```
+
+## Requirements
+- Git
+- Gnu Stow
+
+```bash
+# macOS
+brew install stow
+
+# Ubuntu / Debian
+sudo apt install stow
+
+# Arch
+sudo pacman -S stow
+```
+
+## Getting Started
+
+Make sure you're in Home directory. Otherwise change the commands accordingly.
+
+### 1. Clone the Repo
+```bash
 git clone https://github.com/Toha764/dotfiles ~/dotfiles
 cd ~/dotfiles
 ```
----
-
-## 3. Apply configs
-
-  `stow -d <parent directory> -t ~ <package name or * for all> `
-### OS-specific configs
-
-* macOS:
-
-  ```
-  stow -d ~/dotfiles/os/mac -t ~ *
-  ```
-
-* Linux:
-
-  ```
-  stow -d ~/dotfiles/os/linux -t ~ *
-  ```
-
-Or install just one:
+### 2. Apply configs
 
 ```
-stow -d ~/dotfiles/os/mac -t ~ zsh
+stow -d <source directory> -t ~ <package>
 ```
 
----
+- `-d` is where Stow looks for packages (defaults to the current directory)
+- `-t` is where Stow creates the symlinks (your home directory)
+**Apply everything for your OS at once:**
 
-### Shared configs (packages)
+```bash
+# macOS
+cd ~/dotfiles/os-specific/mac && stow -t ~ */
 
-Example:
-
+# Linux
+cd ~/dotfiles/os-specific/linux && stow -t ~ */
 ```
-stow -d ~/dotfiles/packages -t ~ tmux
+
+**Or pick and choose:**
+
+```bash
+# Just zsh on mac
+stow -d ~/dotfiles/os-specific/mac -t ~ zsh
+
+# Just zsh on linux
+stow -d ~/dotfiles/os-specific/linux -t ~ zsh
 ```
 
----
+*Apply shared packages (OS agnostic stuff):*
 
-Stow creates symlinks in `~` pointing to files in this repo.
+```bash
+stow -d ~/dotfiles/os-agnostic -t ~ tmux
+stow -d ~/dotfiles/os-agnostic -t ~ ghostty
+stow -d ~/dotfiles/os-agnostic -t ~ yazi
+
+# Or all of them at once
+cd ~/dotfiles/os-agnostic && stow -t ~ */
+```
 
 ---
 
 ## Useful commands
 
-* Reapply a package:
+```bash
+# Reapply a package (useful after adding new files to it)
+stow -R -d ~/dotfiles/os-agnostic -t ~ tmux
 
-  ```
-  stow -R tmux
-  ```
+# Remove a package's symlinks
+stow -D -d ~/dotfiles/os-agnostic -t ~ tmux
 
-* Remove a package:
+# Dry run — see what Stow *would* do without actually doing it
+stow -n -d ~/dotfiles/os-agnostic -t ~ tmux
 
-  ```
-  stow -D tmux
-  ```
+# Verbose dry run (see every symlink it plans to create)
+stow -nv -d ~/dotfiles/os-agnostic -t ~ tmux
+```
 
 ---
+# macOs Animations Disable
+
+[Turn off all animations on mac](https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x/142734?__cf_chl_tk=fnQZN1rhsYRvriQK2leX2Ocef2zKgg1zRVxDF_4pXhY-1786512309-1.0.1.1-G3rBItXqs0toHZXn_TvsmDLby8Dcn4u6_0A2YAja3po#142734)
+```text
+defaults write -g NSScrollViewRubberbanding -int 0
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSScrollAnimationEnabled -bool false
+defaults write -g NSWindowResizeTime -float 0.001
+defaults write -g QLPanelAnimationDuration -float 0
+defaults write -g NSScrollViewRubberbanding -bool false
+defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
+defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock expose-animation-duration -float 0
+defaults write com.apple.dock springboard-show-duration -float 0
+defaults write com.apple.dock springboard-hide-duration -float 0
+defaults write com.apple.dock springboard-page-duration -float 0
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults write com.apple.Mail DisableSendAnimations -bool true
+defaults write com.apple.Mail DisableReplyAnimations -bool true
+defaults write NSGlobalDomain NSWindowResizeTime .001
+defaults write com.apple.dock expose-animation-duration -int 0; killall Dock
+defaults write com.apple.dock expose-animation-duration -float 0.1; killall Dock
+```

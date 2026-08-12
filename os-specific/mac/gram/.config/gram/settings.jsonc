@@ -1,0 +1,71 @@
+// Gram settings
+//
+// For information on how to configure Gram, see the Gram
+// documentation: gram://docs/configuring-gram
+//
+// To see all of Gram's default settings without changing your
+// custom settings, run `gram: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "prettier": {
+    "allowed": true
+  },
+  "node": {
+    "allow_npm_install": true,
+    "allow_binary_download": true
+  },
+  "lsp": {
+    "bash-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "json-language-server": {
+      "binary": {
+        "enable_auto_updates": false,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "clangd": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "ruff": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "basedpyright": {
+      "binary": {
+        "enable_auto_updates": true,
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    }
+  },
+  "project_panel": {
+    "file_icons": true,
+    "folder_icons": true
+  },
+  "ui_font_weight": 200.0,
+  "ui_font_family": ".GramMono",
+  "buffer_line_height": "comfortable",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "relative_line_numbers": "enabled",
+  "vim_mode": true,
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Gram (Default)",
+    "dark": "Catppuccin Latte"
+  },
+  "base_keymap": "VSCode",
+  "ui_font_size": 13.0,
+  "buffer_font_size": 18.0,
+  "theme": "Catppuccin Mocha",
+}

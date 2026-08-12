@@ -24,6 +24,7 @@ Feel free to contribute here. Main goal:
 
 ### Data Structures & Algorithms (DSA)
 
+- [Visual Algo Like](https://csvistool.com/)
 - [The Algorithms](https://github.com/TheAlgorithms)
   Data structures and algorithms implemented in many languages.
 - [Big-O Algorithm Complexity Cheat Sheet](https://www.bigocheatsheet.com/)
@@ -192,7 +193,7 @@ Feel free to contribute here. Main goal:
 - [Physics, Math, & Engineering Visualization](https://www.falstad.com)
 
 ---
-### People & Channels to Follow
+### Youtube Channels to Checkout
 
 **Computer Science**
 - https://www.youtube.com/@SebastianLague
@@ -201,11 +202,14 @@ Feel free to contribute here. Main goal:
 - https://www.youtube.com/@visualkernel
 - https://www.youtube.com/@ArtemKirsanov
 - https://www.youtube.com/@Computerphile
+**AI ML**
+- https://www.youtube.com/@statquest
 **Software Engineering**
 - https://www.youtube.com/@ThePrimeTimeagen
 - https://www.youtube.com/@BenVallack
 - https://www.youtube.com/@sriniously
 - https://www.youtube.com/@diegoarias-tech
+- https://www.youtube.com/@ByteByteGo
 **Security**
 - https://www.youtube.com/@LowLevelTV
 **Mathematics**
@@ -217,4 +221,3 @@ Feel free to contribute here. Main goal:
 - https://www.youtube.com/@DrTrefor
 **Others**
 - https://www.youtube.com/@veritasium
-
