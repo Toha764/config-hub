@@ -1,0 +1,351 @@
+
+[[Snippets]]
+  Description = "docker run with port and volume"
+  Output = ""
+  Tag = ["docker"]
+  command = "docker run -d --name name -p hostport:containerport -v vol-name:app/data image:latest"
+
+[[Snippets]]
+  Description = "ssl cert expiry dates"
+  Output = ""
+  Tag = ["ssl"]
+  command = "echo | openssl s_client -connect <host=example.com>:<port=443> 2>/dev/null | openssl x509 -dates -noout"
+
+[[Snippets]]
+  Description = "symlink two paths"
+  Output = ""
+  Tag = ["fs"]
+  command = "ln -s <target=/opt/myapp/config.yaml> <link=/etc/myapp/config.yaml>"
+
+[[Snippets]]
+  Description = "network interfaces and ips"
+  Output = ""
+  Tag = ["network"]
+  command = "ifconfig | awk '/^[^[:space:]]/ {iface=$1} /inet / {print iface, $2} /inet6 / {print iface, $2}'"
+
+[[Snippets]]
+  Description = "public ip"
+  Output = ""
+  Tag = ["network"]
+  command = "curl -s ipinfo.io"
+
+[[Snippets]]
+  Description = "fuzzy search man pages"
+  Output = ""
+  Tag = ["fzf"]
+  command = "man $(man -k . | fzf | awk \"{print \\$1}\" | sed \"s/(.*//\")"
+
+[[Snippets]]
+  Description = "find process by name"
+  Output = ""
+  Tag = ["process"]
+  command = "pgrep -fl '<name>'"
+
+[[Snippets]]
+  Description = "listening tcp ports"
+  Output = ""
+  Tag = ["network"]
+  command = "sudo lsof -nP -iTCP -sTCP:LISTEN"
+
+[[Snippets]]
+  Description = "journal warnings"
+  Output = ""
+  Tag = ["linux", "logs"]
+  command = "sudo journalctl -p warning -n 50 --no-pager"
+
+[[Snippets]]
+  Description = "journal errors"
+  Output = ""
+  Tag = ["linux", "logs"]
+  command = "sudo journalctl -p err -n 50 --no-pager"
+
+[[Snippets]]
+  Description = "macos error logs last hour"
+  Output = ""
+  Tag = ["macos", "logs"]
+  command = "log show --last 1h --predicate 'messageType == error' --style compact"
+
+[[Snippets]]
+  Description = "running systemd services"
+  Output = ""
+  Tag = ["linux", "systemd"]
+  command = "systemctl --type=service --state=running"
+
+[[Snippets]]
+  Description = "highlight log colors"
+  Output = ""
+  Tag = []
+  command = "grep -E --color 'error|warn|info|debug|$'"
+
+[[Snippets]]
+  Description = "format json output"
+  Output = ""
+  Tag = ["fmt"]
+  command = "jq ."
+
+[[Snippets]]
+  Description = "align columns"
+  Output = ""
+  Tag = ["fmt"]
+  command = "column -t"
+
+[[Snippets]]
+  Description = "highlight log levels"
+  Output = ""
+  Tag = ["fmt", "logs"]
+  command = "grep -E --color 'error|warn|info|$'"
+
+[[Snippets]]
+  Description = "syntax highlight output"
+  Output = ""
+  Tag = ["fmt"]
+  command = "bat -l <lang=log>"
+
+[[Snippets]]
+  Description = "pretty log graph"
+  Output = ""
+  Tag = ["git"]
+  command = "git log --oneline --graph --decorate --all"
+
+[[Snippets]]
+  Description = "log with stats"
+  Output = ""
+  Tag = ["git"]
+  command = "git log --stat --oneline -n <n=10>"
+
+[[Snippets]]
+  Description = "search commits by code change"
+  Output = ""
+  Tag = ["git"]
+  command = "git log -S '<string>' --oneline"
+
+[[Snippets]]
+  Description = "diff staged changes"
+  Output = ""
+  Tag = ["git"]
+  command = "git diff --cached"
+
+[[Snippets]]
+  Description = "show files changed in commit"
+  Output = ""
+  Tag = ["git"]
+  command = "git show --stat <hash=HEAD>"
+
+[[Snippets]]
+  Description = "show who changed a line"
+  Output = ""
+  Tag = ["git"]
+  command = "git blame -L <start=1>,<end=20> <file>"
+
+[[Snippets]]
+  Description = "undo last commit keep changes"
+  Output = ""
+  Tag = ["git"]
+  command = "git reset --soft HEAD~1"
+
+[[Snippets]]
+  Description = "undo last commit discard changes"
+  Output = ""
+  Tag = ["git"]
+  command = "git reset --hard HEAD~1"
+
+[[Snippets]]
+  Description = "stash with untracked changes"
+  Output = ""
+  Tag = ["git"]
+  command = "git stash -u"
+
+[[Snippets]]
+  Description = "find commit that introduced bug"
+  Output = ""
+  Tag = ["git"]
+  command = "git bisect start && git bisect bad && git bisect good <hash>"
+
+[[Snippets]]
+  Description = "edit last commit message"
+  Output = ""
+  Tag = ["git"]
+  command = "git commit --amend --no-edit"
+
+[[Snippets]]
+  Description = "interactive rebase last n commits"
+  Output = ""
+  Tag = ["git"]
+  command = "git rebase -i HEAD~<n=3>"
+
+[[Snippets]]
+  Description = "clone single branch shallow"
+  Output = ""
+  Tag = ["git"]
+  command = "git clone --depth=1 --branch <branch=main> <url>"
+
+[[Snippets]]
+  Description = "copy password to clipboard"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass show -c <name>"
+
+[[Snippets]]
+  Description = "show password"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass show <name>"
+
+[[Snippets]]
+  Description = "insert new password"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass insert <name>"
+
+[[Snippets]]
+  Description = "insert multiline entry"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass insert -m <name>"
+
+[[Snippets]]
+  Description = "generate password"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass generate <name> <length=32>"
+
+[[Snippets]]
+  Description = "edit entry"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass edit <name>"
+
+[[Snippets]]
+  Description = "find entries by name"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass find <query>"
+
+[[Snippets]]
+  Description = "grep across all entries"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass grep <pattern>"
+
+[[Snippets]]
+  Description = "move rename entry"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass mv <old> <new>"
+
+[[Snippets]]
+  Description = "delete entry"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass rm <name>"
+
+[[Snippets]]
+  Description = "list store"
+  Output = ""
+  Tag = ["pass"]
+  command = "pass ls"
+
+[[Snippets]]
+  Description = "connect with identity file"
+  Output = ""
+  Tag = ["ssh"]
+  command = "ssh -i <key=~/.ssh/id_rsa> <user=root>@<host>"
+
+[[Snippets]]
+  Description = "copy public key to host"
+  Output = ""
+  Tag = ["ssh"]
+  command = "ssh-copy-id -i <key=~/.ssh/id_rsa.pub> <user=root>@<host>"
+
+[[Snippets]]
+  Description = "generate ed25519 key"
+  Output = ""
+  Tag = ["ssh"]
+  command = "ssh-keygen -t ed25519 -C '<comment>'"
+
+[[Snippets]]
+  Description = "copy file from remote"
+  Output = ""
+  Tag = ["ssh", "scp"]
+  command = "scp <user>@<host>:<path> <dest=.>"
+
+[[Snippets]]
+  Description = "run command on remote"
+  Output = ""
+  Tag = ["ssh"]
+  command = "ssh <user>@<host> '<cmd>'"
+
+[[Snippets]]
+  Description = "add key to agent"
+  Output = ""
+  Tag = ["ssh"]
+  command = "ssh-add <key=~/.ssh/id_ed25519>"
+
+[[Snippets]]
+  Description = "local port forward (access exposed)"
+  Output = ""
+  Tag = ["ssh", "tunnel"]
+  command = "ssh -L <local=8080>:<remote-host=localhost>:<remote-port=80> <user>@<host>"
+
+[[Snippets]]
+  Description = "remote port forward (expose myself)"
+  Output = ""
+  Tag = ["ssh", "tunnel"]
+  command = "ssh -R <remote=8080>:<local-host=localhost>:<local-port=80> <user>@<host>"
+
+[[Snippets]]
+  Description = "list loaded keys"
+  Output = ""
+  Tag = ["ssh"]
+  command = "ssh-add -l"
+
+# =========== GNU Stow ==========
+[[Snippets]]
+  Description = "stow apply mac package"
+  Tag = ["stow", "dots"]
+  command = "stow -d <dotfiles=~/dotfiles>/os-specific/mac -t ~ <package>"
+
+[[Snippets]]
+  Description = "stow apply linux package"
+  Tag = ["stow", "dots"]
+  command = "stow -d <dotfiles=~/dotfiles>/os-specific/linux -t ~ <package>"
+
+[[Snippets]]
+  Description = "stow apply agnostic package"
+  Tag = ["stow", "dots"]
+  command = "stow -d <dotfiles=~/dotfiles>/os-agnostic -t ~ <package>"
+
+[[Snippets]]
+  Description = "stow apply all mac"
+  Tag = ["stow", "dots"]
+  command = "cd <dotfiles=~/dotfiles>/os-specific/mac && stow -t ~ */"
+
+[[Snippets]]
+  Description = "stow reapply package"
+  Tag = ["stow", "dots"]
+  command = "stow -R -d <dotfiles=~/dotfiles/os-agnostic> -t ~ <package>"
+
+[[Snippets]]
+  Description = "stow remove package"
+  Tag = ["stow", "dots"]
+  command = "stow -D -d <dotfiles=~/dotfiles>/os-agnostic> -t ~ <package>"
+
+[[Snippets]]
+  Description = "stow dry run"
+  Tag = ["stow", "dots"]
+  command = "stow -nv -d <dotfiles=~/dotfiles/os-agnostic> -t ~ <package>"
+
+# =========== CUSTOM ==========
+
+[[Snippets]]
+  Description = "monoc health check"
+  Output = ""
+  Tag = ["monoc"]
+  command = "ssh Blimp6233@vps2.ghos1y.com 'docker ps'"
+
+[[Snippets]]
+  Description = "start omni monoc server"
+  Output = ""
+  Tag = ["monoc"]
+  command = "docker run -d --name monoc-models -p 20128:20128 -v monoc-cpu-emulator_monoc_db:/app/data diegosouzapw/omniroute:latest"
+

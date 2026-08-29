@@ -2,4 +2,5 @@
 ./prompts-skills/
 /wallpapers/
 
+os-agnostic/pet/.config/pet/config.toml
 

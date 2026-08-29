@@ -83,6 +83,7 @@ Feel free to contribute here. Main goal:
 - [Cryptii - Modular Conversion](https://cryptii.com/)
 - [Boxentriq - Puzzle Tools](https://www.boxentriq.com/)
 - [CyberChef](https://gchq.github.io/CyberChef/)
+- [Practise CLI Commands (ssh, npm, docker etc.)](https://technoscripts.com/cli/)
 
 ---
 

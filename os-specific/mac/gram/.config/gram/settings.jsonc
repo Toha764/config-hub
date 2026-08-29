@@ -7,6 +7,13 @@
 // custom settings, run `gram: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "preview_tabs": {
+    "enable_preview_from_project_panel": true
+  },
+  "active_pane_modifiers": {
+    "inactive_opacity": 1.0
+  },
+  "soft_wrap": "editor_width",
   "prettier": {
     "allowed": true
   },
@@ -15,6 +22,36 @@
     "allow_binary_download": true
   },
   "lsp": {
+    "package-version-server": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "tailwindcss-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "vtsls": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "eslint": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
+    "vscode-css-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
     "bash-language-server": {
       "binary": {
         "allow_binary_download": true
@@ -49,6 +86,7 @@
     }
   },
   "project_panel": {
+    "dock": "right",
     "file_icons": true,
     "folder_icons": true
   },
@@ -64,6 +102,7 @@
     "light": "Gram (Default)",
     "dark": "Catppuccin Latte"
   },
+  "format_on_save": "off",
   "base_keymap": "VSCode",
   "ui_font_size": 13.0,
   "buffer_font_size": 18.0,

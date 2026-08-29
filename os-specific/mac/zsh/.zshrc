@@ -56,7 +56,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'  # underline text
 
 # ====================================================================
 # From this point on, highly customized and requires dependencies
-# git cli, fzf, zoxide, tmux, eza, bat, neovim
+# git cli, fzf, zoxide, tmux, eza, bat, neovim, pet, fd, rg
 # ====================================================================
 
 ### FZF & Navigation Tools ###
@@ -69,11 +69,9 @@ set -o vi
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-### Smart Aliases ###
+### qol alias ###
 alias src='source ~/.zshrc'      # reload config
 alias rc='nvim $HOME/.zshrc'    # edit config
-alias ip='curl -s ipinfo.io'    # quick public IP info
-alias lip="ifconfig | awk '/inet /{print $2}'"
 
 # --- quick commands ---
 alias c="clear"
@@ -84,25 +82,70 @@ alias yz="yazi"
 alias cat="bat"
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 alias tx="tmux attach 2>/dev/null || tmux new-session -s main"
-alias nlsh="~/.scripts/nlsh-mac.sh"
-alias ask="\"/Users/toha/100 Projects/30 Py, Go, CLI/ask-bot/venv/bin/python\" \"/Users/toha/100 Projects/30 Py, Go, CLI/ask-bot/ask.py\""
 
 ### Fuzzy Obessesion ###
-alias lo='source ~/.scripts/fzf-oldfiles.sh'                  # fuzzy recent files (script based)
 alias fnv="nvim \$(fzf --preview 'bat --color=always {}')"                      # fuzzy open file
-alias fcd="cd \$(fd --type d | fzf --preview 'eza --tree --color=always {}')"  # fuzzy cd
-alias fkill="ps aux | fzf | awk '{print \$2}' | xargs kill"                    # fuzzy kill process
-alias fman='man $(man -k . | fzf | awk "{print \$1}" | sed "s/(.*//")'         # fuzzy man search
-alias fsh='source ~/.scripts/fzf-nlsh.sh'                                      # fuzzy ask search
 
 ### Git Shortcuts ###
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
-alias gp='git push origin main'
+alias gp='git push origin'
 alias gl='git log --oneline --graph --all'
 alias gcreate='gh repo create --private --source=. --remote=origin'
 
-
 # Added by Antigravity IDE
 export PATH="/Users/toha/.antigravity-ide/antigravity-ide/bin:$PATH"
+export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
+export ANTHROPIC_BASE_URL="http://localhost:20128"
+export ANTHROPIC_AUTH_TOKEN="sk-7cb0adcfa88f7f94-8fff4a-280f6bdd"
+
+# Pet
+export FZF_CTRL_R_OPTS="
+  --reverse
+  --cycle
+  --info=right
+  --color header:italic
+  --header 'alt+s (pet new)'
+  --preview 'echo {}' --preview-window down:3:hidden:wrap
+  --bind '?:toggle-preview'
+  --bind 'alt-s:execute(pet new --tag {2..})+abort'"
+
+# ========================================
+# replaces buffer — existing ^S
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER" </dev/tty)
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+bindkey '^s' pet-select
+
+# appends to buffer with pipe — new ^p
+function pet-pipe() {
+  local snippet
+  snippet=$(pet search --query "" </dev/tty)
+  [ -n "$snippet" ] && LBUFFER="${LBUFFER} | ${snippet}"
+  zle redisplay
+}
+zle -N pet-pipe
+bindkey '^p' pet-pipe
+
+function _pet_move_cursor_to_next_parameter() {
+  local match default match_len default_len parameter_offset
+  match="$(echo "$BUFFER" | perl -nle 'print $& if /<.*?>/')"
+  if [ -n "$match" ]; then
+    setopt local_options no_glob_subst
+    default="$(echo "$match" | perl -nle 'print $& if /(?<==).*(?=>)/')"
+    match_len=${#match}
+    default_len=${#default}
+    parameter_offset=${#BUFFER%%$match*}
+    CURSOR="$((parameter_offset + default_len))"
+    BUFFER="${BUFFER[1,$parameter_offset]}${default}${BUFFER[$parameter_offset+$match_len+1,-1]}"
+  fi
+}
+zle -N _pet_move_cursor_to_next_parameter
+bindkey '^n' _pet_move_cursor_to_next_parameter
+
+stty -ixon  # at the bottom
+# =======================================
