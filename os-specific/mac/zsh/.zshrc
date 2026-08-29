@@ -98,7 +98,7 @@ alias gcreate='gh repo create --private --source=. --remote=origin'
 export PATH="/Users/toha/.antigravity-ide/antigravity-ide/bin:$PATH"
 export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
 export ANTHROPIC_BASE_URL="http://localhost:20128"
-export ANTHROPIC_AUTH_TOKEN="sk-7cb0adcfa88f7f94-8fff4a-280f6bdd"
+export ANTHROPIC_AUTH_TOKEN="$(cat ~/.secrets/claude_key)"
 
 # Pet
 export FZF_CTRL_R_OPTS="
