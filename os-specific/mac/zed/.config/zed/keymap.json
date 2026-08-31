@@ -13,6 +13,12 @@
     },
   },
   {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleRightDock"
+    }
+  },
+  {
     "context": "Editor && vim_mode == insert",
     "bindings": {
       "j j": "vim::NormalBefore",
@@ -25,8 +31,10 @@
       "space w": "workspace::Save",
 
       // ── File explorer (matches Neovim <leader>e) ──
-      "space e": "project_panel::ToggleFocus",
-      "space a": "agent::ToggleFocus",
+      "space e": "workspace::ToggleRightDock",
+      
+      // ── AI Assistant ──
+      "space a": "workspace::ToggleLeftDock",
 
       // ── Fuzzy finders (matches Neovim <leader>f* via fzf-lua) ──
       "space f f": "file_finder::Toggle",

@@ -1,3 +1,8 @@
+# Preview
+
+<img src="./preview/forest_example.png" width="600">
+
+
 # Dotfiles Setup
 
 Personal config files, managed with [GNU Stow](https://www.gnu.org/software/stow/).

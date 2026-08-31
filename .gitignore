@@ -1,6 +1,5 @@
 *.jsonl
 ./prompts-skills/
-/wallpapers/
-
+.DS_Store
 os-agnostic/pet/.config/pet/config.toml
 

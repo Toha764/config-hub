@@ -15,29 +15,44 @@ brew update
 
 echo "---- Installing CLI developer stack ----"
 brew install \
-docker \
-go \
-node \
-python \
-neovim \
-yazi \
-bat \
-btop \
-tldr \
-lsd \
-ffmpegthumbnailer \
-poppler \
-chafa \
-mediainfo \
-exiftool
+  bat \
+  btop \
+  chafa \
+  docker \
+  exiftool \
+  eza \
+  fastfetch \
+  fd \
+  ffmpegthumbnailer \
+  fzf \
+  gh \
+  go \
+  jq \
+  lazydocker \
+  lazygit \
+  mackup \
+  neovim \
+  node \
+  pet \
+  poppler \
+  python \
+  ripgrep \
+  stow \
+  tlrc \
+  tmux \
+  wget \
+  yazi \
+  zoxide
 
 echo "---- Installing GUI applications ----"
 brew install --cask \
-ghostty \
-raycast \
-zed \
-zen-browser \
-docker
+  docker \
+  font-jetbrains-mono-nerd-font \
+  ghostty \
+  karabiner-elements \
+  raycast \
+  zed \
+  zen-browser
 
 echo "---- Installing Oh My Zsh ----"
 if [ ! -d "$HOME/.oh-my-zsh" ]; then

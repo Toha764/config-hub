@@ -1,25 +1,4 @@
 {
-  "agent_servers": {
-    "github-copilot-cli": {
-      "type": "registry"
-    }
-  },
-  "edit_predictions": {
-    "mode": "subtle",
-    "copilot": {
-      "enable_next_edit_suggestions": false
-    },
-    "provider": "copilot"
-  },
-  "context_servers": {
-    "mcp-server-context7": {
-      "enabled": true,
-      "remote": false,
-      "settings": {
-        "context7_api_key": "ctx7sk-75b79033-65a5-4df8-b80a-e16257eb9524"
-      }
-    }
-  },
   "which_key": {
     "enabled": true
   },
@@ -32,20 +11,22 @@
   "vim": {
     "toggle_relative_line_numbers": true
   },
-  "agent_ui_font_size": 14.0,
+  "agent_ui_font_size": 16.0,
   "buffer_line_height": "comfortable",
   "diff_view_style": "unified",
   "disable_ai": false,
   "vim_mode": true,
   "base_keymap": "VSCode",
-  "ui_font_weight": 150.0,
-  "ui_font_family": "Hack Nerd Font Mono",
-  "buffer_font_weight": 400.0,
+  "ui_font_family": ".ZedMono",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "ui_font_size": 12.0,
-  "buffer_font_size": 18.0,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 16.0,
   "relative_line_numbers": "enabled",
-  "theme": "Catppuccin Macchiato",
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light Soft",
+    "dark": "Gruvbox Dark"
+  },
   "terminal": {
     "default_height": 500.0,
     "font_size": 20.0,
@@ -59,20 +40,10 @@
     "button": false
   },
   "chat_panel": {
-    "button": "never"
-  },
-  "agent": {
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-3.7-flash",
-      "enable_thinking": true,
-      "effort": "medium"
-    },
-    "dock": "left"
+    "button": false
   },
   "project_panel": {
     "git_status": true,
-    "file_icons": true,
     "folder_icons": true,
     "hide_gitignore": false,
     "dock": "right",
@@ -109,10 +80,9 @@
   },
   "colorize_brackets": false,
   "soft_wrap": "editor_width",
-  "format_on_save": "off",
   "icon_theme": {
-    "mode": "dark",
+    "mode": "system",
     "light": "Zed (Default)",
-    "dark": "Catppuccin Latte"
+    "dark": "Zed (Default)"
   },
 }

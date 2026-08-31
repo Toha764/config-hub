@@ -1,4 +1,4 @@
-### Oh My Zsh ###
+### oh my zsh ###
 ZSH_THEME="robbyrussell"
 
 plugins=(
@@ -18,11 +18,11 @@ printf '\e[35m
 '
 
 ### Some vanilla zsh-config stolen from Kali Linux ###
-# --- Navigation ---
+# --- navigation ---
 setopt autocd              # cd into a directory just by typing its name
 WORDCHARS='_- '           # treat _ and - as word separators (better movement/editing)
 
-# --- Auto Completion ---
+# --- auto completion ---
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
 
@@ -31,7 +31,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case-insensitive m
 zstyle ':completion:*' auto-description 'specify: %d'       # better descriptions
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more%s
 
-# --- History Improvements ---
+# --- history improvements ---
 setopt HIST_IGNORE_ALL_DUPS      # remove older duplicates
 setopt SHARE_HISTORY            # share history across sessions
 setopt hist_ignore_space        # don't save commands starting with space
@@ -50,21 +50,17 @@ bindkey '^U' backward-kill-line  # Ctrl + U delete line
 
 NEWLINE_BEFORE_PROMPT=yes        # add spacing before each prompt
 
-# --- Better man/help page colors ---
-export LESS_TERMCAP_md=$'\E[1;36m'  # bold text
-export LESS_TERMCAP_us=$'\E[1;32m'  # underline text
-
 # ====================================================================
 # From this point on, highly customized and requires dependencies
 # git cli, fzf, zoxide, tmux, eza, bat, neovim, pet, fd, rg
 # ====================================================================
 
-### FZF & Navigation Tools ###
+### FZF & navigation tools ###
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
-### Editor & Mode ###
+### editor & mode ###
 set -o vi
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -83,10 +79,10 @@ alias cat="bat"
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 alias tx="tmux attach 2>/dev/null || tmux new-session -s main"
 
-### Fuzzy Obessesion ###
+### fuzzy obessesion ###
 alias fnv="nvim \$(fzf --preview 'bat --color=always {}')"                      # fuzzy open file
 
-### Git Shortcuts ###
+### git shortcuts ###
 alias ga="git add ."
 alias gs="git status -s"
 alias gc='git commit -m'
@@ -94,13 +90,14 @@ alias gp='git push origin'
 alias gl='git log --oneline --graph --all'
 alias gcreate='gh repo create --private --source=. --remote=origin'
 
-# Added by Antigravity IDE
-export PATH="/Users/toha/.antigravity-ide/antigravity-ide/bin:$PATH"
+# exports
 export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
 export ANTHROPIC_BASE_URL="http://localhost:20128"
 export ANTHROPIC_AUTH_TOKEN="$(cat ~/.secrets/claude_key)"
+export GOOGLE_CLIENT_ID="$(cat ~/.secrets/google/client_id)"
+export GOOGLE_CLIENT_SECRET="$(cat ~/.secrets/google/client_secret)"
 
-# Pet
+# pet configurations
 export FZF_CTRL_R_OPTS="
   --reverse
   --cycle
@@ -111,7 +108,6 @@ export FZF_CTRL_R_OPTS="
   --bind '?:toggle-preview'
   --bind 'alt-s:execute(pet new --tag {2..})+abort'"
 
-# ========================================
 # replaces buffer — existing ^S
 function pet-select() {
   BUFFER=$(pet search --query "$LBUFFER" </dev/tty)
@@ -147,5 +143,5 @@ function _pet_move_cursor_to_next_parameter() {
 zle -N _pet_move_cursor_to_next_parameter
 bindkey '^n' _pet_move_cursor_to_next_parameter
 
-stty -ixon  # at the bottom
+stty -ixon
 # =======================================
