@@ -1,13 +1,22 @@
-# Preview
+# About
 
-<img src="./preview/forest_example.png" width="600">
+This repo contains [scripts](./scripts/), [tools](./cli-tools.md), wallpapers, personal configuration files for mac, linux, and (no not you windows) created over the years.
+Also a list of useful **resources/contents** [here](./resource-archive.md)
+
+### Preview
+
+<p align="center">
+  <img src="./preview/forest_example.png" width="800"><br>
+  <em>Forest Wallpaper — macOS</em>
+</p>
 
 
-# Dotfiles Setup
+# How to Setup
 
 Personal config files, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Structure
+Divided into two parts. i) os-agnostic ii) os-specific
 ```
 dotfiles/
 ├── os-specific/
